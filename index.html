@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tmazing Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Tmazing Dashboard</p>
+      <h1>All your tools, without loading the planner.</h1>
+      <p class="subtitle">This separate dashboard keeps the planner lighter. Use it to open the app you need, check backup reminders, and recover if a cached app misbehaves.</p>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="card primary">
+      <p class="eyebrow">Life admin</p>
+      <h2>Focus Week Planner</h2>
+      <p>Grouped task piles above a drag-and-drop weekly calendar.</p>
+      <div class="actions">
+        <a href="https://izdrewz.github.io/Tma-workbench-local/planner.html">Open planner</a>
+        <a href="https://izdrewz.github.io/Tma-workbench-local/update.html">Fix/update planner</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="eyebrow">University</p>
+      <h2>Tmazing Uni Hub</h2>
+      <p>Deadlines, module dashboards, source library, source checker, references, and session vault.</p>
+      <a href="https://izdrewz.github.io/tmazing/">Open uni hub</a>
+    </section>
+
+    <section class="card">
+      <p class="eyebrow">PDFs</p>
+      <h2>PDF Split Cleaner</h2>
+      <p>Original PDF beside editable reproduction, presets, deletions, and collapsible transcript blocks.</p>
+      <a href="https://izdrewz.github.io/pdf/">Open PDF cleaner</a>
+    </section>
+
+    <section class="card">
+      <p class="eyebrow">Inventory</p>
+      <h2>Clothes Stock</h2>
+      <p>Track clothes to keep, sell, upscale, photograph, list, repair, or locate.</p>
+      <a href="https://izdrewz.github.io/Tma-workbench-local/stock.html">Open clothes stock</a>
+    </section>
+
+    <section class="card">
+      <p class="eyebrow">Planning</p>
+      <h2>Gift Planner</h2>
+      <p>Track birthdays, Christmas, ideas, budgets, bought, wrapped, and given.</p>
+      <a href="https://izdrewz.github.io/Tma-workbench-local/gifts.html">Open gift planner</a>
+    </section>
+
+    <section class="card backup-card">
+      <p class="eyebrow">Backups</p>
+      <h2>Backup check</h2>
+      <p id="backupStatus">Checking...</p>
+      <button id="markBackup" type="button">I exported backups today</button>
+    </section>
+  </main>
+
+  <script>
+    const key = 'tmazing-dashboard-backup-v2';
+    const status = document.getElementById('backupStatus');
+    const last = localStorage.getItem(key);
+    if (!last) status.textContent = 'No backup marked yet. Export backups from each app before relying on browser storage.';
+    else {
+      const days = Math.floor((Date.now() - new Date(last).getTime()) / 86400000);
+      status.textContent = days === 0 ? 'Backups marked today.' : `Last backup marked ${days} day(s) ago.`;
+    }
+    document.getElementById('markBackup').addEventListener('click', () => {
+      localStorage.setItem(key, new Date().toISOString());
+      status.textContent = 'Backups marked today.';
+    });
+  </script>
+</body>
+</html>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
   <header class="hero">
@@ -12,12 +12,20 @@
   </header>
 
   <main class="dashboard">
-    <a class="card app-card" href="https://izdrewz.github.io/Tma-workbench-local/planner.html">
+    <a class="card app-card" href="https://izdrewz.github.io/Tma-workbench-local/planner.html?fresh=44">
       <h2>Calendar</h2>
     </a>
 
-    <a class="card app-card" href="https://izdrewz.github.io/tmazing/">
+    <a class="card app-card" href="https://izdrewz.github.io/tmazing/?fresh=11">
       <h2>Uni Hub</h2>
+    </a>
+
+    <a class="card app-card" href="https://izdrewz.github.io/tmazing/?fresh=11#feedbackMarkup">
+      <h2>Feedback Markup</h2>
+    </a>
+
+    <a class="card app-card" href="https://izdrewz.github.io/comparer/?fresh=1">
+      <h2>Comparer</h2>
     </a>
 
     <a class="card app-card" href="https://izdrewz.github.io/pdf/">
@@ -45,7 +53,7 @@
   </main>
 
   <script>
-    const key = 'tmazing-dashboard-backup-v3';
+    const key = 'tmazing-dashboard-backup-v4';
     const status = document.getElementById('backupStatus');
     const last = localStorage.getItem(key);
     if (!last) {
